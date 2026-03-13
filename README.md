@@ -75,19 +75,35 @@ assingment/
 
 ## How to Run
 
-### 1. Install dependencies
+### 1. Create and activate a virtual environment
 ```bash
-pip install mlflow scikit-learn matplotlib seaborn pandas numpy
+python -m venv .venv
 ```
 
-### 2. Run the notebook
-Open `mlflow_experiment.ipynb` in Jupyter or VS Code and run all cells.
-
-### 3. Launch MLflow UI
+Windows PowerShell:
 ```bash
-mlflow ui
+.\.venv\Scripts\Activate.ps1
+```
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+python -m ipykernel install --user --name mlflow-venv --display-name "Python (.venv - mlflow)"
+```
+
+### 3. Run the notebook
+Open `mlflow_experiment.ipynb` in Jupyter or VS Code, select the `Python (.venv - mlflow)` kernel, and run all cells.
+
+### 4. Launch MLflow UI
+```bash
+mlflow ui --backend-store-uri sqlite:///mlflow.db --host 127.0.0.1 --port 5000
 ```
 Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
+
+If port 5000 is busy, run:
+```bash
+mlflow ui --backend-store-uri sqlite:///mlflow.db --host 127.0.0.1 --port 5001
+```
 
 ---
 
